@@ -1,14 +1,15 @@
 package com.example.myproject.miniproject.services;
 
-import com.example.myproject.miniproject.entities.TopicEntity;
+import com.example.myproject.miniproject.entities.Topics;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface TopicService {
 
-    TopicEntity createNewTopic(TopicEntity request);
+    Topics createNewTopic(Topics request);
 
-    public List<TopicEntity> getAllTopic();
+    public List<Topics> getAllTopic();
 
-    public TopicEntity getById(int id);
+    public Optional<Topics> getById(int id);
 }

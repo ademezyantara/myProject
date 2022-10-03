@@ -1,12 +1,13 @@
 package com.example.myproject.miniproject.services.impl;
 
-import com.example.myproject.miniproject.entities.CategoryEntity;
+import com.example.myproject.miniproject.entities.Category;
 import com.example.myproject.miniproject.repositories.CategoryRepository;
 import com.example.myproject.miniproject.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
@@ -15,18 +16,18 @@ public class CategoryServiceImpl implements CategoryService {
     CategoryRepository categoryRepository;
 
     @Override
-    public CategoryEntity creatNewCategory(CategoryEntity request) {
+    public Category creatNewCategory(Category request) {
         categoryRepository.save(request);
         return request;
     }
 
     @Override
-    public List<CategoryEntity> getAllCategory() {
-        return categoryRepository.findAll();
+    public List<Category> getAllCategory() {
+        return categoryRepository.findAllSortedByNameUsingNative();
     }
 
     @Override
-    public CategoryEntity getById(int id) {
-        return categoryRepository.findById(id).get();
+    public Optional<Category> getById(int id) {
+        return categoryRepository.findByIdUsingNative(id);
     }
 }

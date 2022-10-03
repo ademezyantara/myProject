@@ -1,14 +1,15 @@
 package com.example.myproject.miniproject.services;
 
-import com.example.myproject.miniproject.entities.CategoryEntity;
+import com.example.myproject.miniproject.entities.Category;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface CategoryService {
 
-    CategoryEntity creatNewCategory (CategoryEntity request);
+    Category creatNewCategory (Category request);
 
-    public List<CategoryEntity> getAllCategory();
+    public List<Category> getAllCategory();
 
-    public CategoryEntity getById(int id);
+    public Optional<Category> getById(int id);
 }

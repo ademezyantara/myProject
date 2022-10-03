@@ -1,16 +1,17 @@
 package com.example.myproject.miniproject.services;
 
-import com.example.myproject.miniproject.entities.OrganizerEntity;
+import com.example.myproject.miniproject.dto.OrganizerDto;
+import com.example.myproject.miniproject.entities.Organizer;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface OrganizerService {
 
-    OrganizerEntity createOrganizer(OrganizerEntity request);
+    Organizer createOrganizer(Organizer request);
 
-    public List<OrganizerEntity> getAllOrganizer();
+    public List<OrganizerDto> getAllOrganizer();
 
-    Optional <OrganizerEntity> getById(int id);
+    Optional <Organizer> getById(int id);
 
 }

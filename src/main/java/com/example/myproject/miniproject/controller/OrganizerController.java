@@ -1,8 +1,8 @@
 package com.example.myproject.miniproject.controller;
 
+import com.example.myproject.miniproject.dto.OrganizerDto;
 import com.example.myproject.miniproject.services.impl.OrganizerServiceImpl;
-import com.example.myproject.miniproject.entities.OrganizerEntity;
-import com.example.myproject.miniproject.repositories.OrganizerRepository;
+import com.example.myproject.miniproject.entities.Organizer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +14,6 @@ import java.util.Optional;
 public class OrganizerController {
 
     @Autowired
-    OrganizerRepository organizerRepository;
-
-    @Autowired
     OrganizerServiceImpl organizerServiceImpl;
 
     @GetMapping("/checkAPI")
@@ -25,7 +22,7 @@ public class OrganizerController {
     }
 
     @PostMapping("/addNewOrganizer")
-    public OrganizerEntity addNewOrganizer(@RequestBody OrganizerEntity param){
+    public Organizer addNewOrganizer(@RequestBody Organizer param){
 
 
         organizerServiceImpl.createOrganizer(param);
@@ -33,12 +30,12 @@ public class OrganizerController {
     }
 
     @GetMapping("/getAllOrganizer")
-    public List<OrganizerEntity> getAllOrganizer(){
+    public List<OrganizerDto> getAllOrganizer(){
         return organizerServiceImpl.getAllOrganizer();
     }
 
     @GetMapping("getById")
-    public Optional<OrganizerEntity> getById(@RequestParam int id){
+    public Optional<Organizer> getById(@RequestParam int id){
         return organizerServiceImpl.getById(id);
     }
 }

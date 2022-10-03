@@ -1,13 +1,12 @@
 package com.example.myproject.miniproject.controller;
 
-import com.example.myproject.miniproject.entities.CategoryEntity;
-import com.example.myproject.miniproject.entities.OrganizerEntity;
-import com.example.myproject.miniproject.services.CategoryService;
+import com.example.myproject.miniproject.entities.Category;
 import com.example.myproject.miniproject.services.impl.CategoryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/categoriez")
@@ -17,19 +16,19 @@ public class CategoryController {
     CategoryServiceImpl categoryServiceImpl;
 
     @PostMapping("/addNewCategory")
-    public CategoryEntity addNewCategory(@RequestBody CategoryEntity param){
+    public Category addNewCategory(@RequestBody Category param){
 
         categoryServiceImpl.creatNewCategory(param);
         return param;
     }
 
-    @GetMapping("/getAllCategoriez")
-    public List<CategoryEntity> getAllCategory(){
+    @GetMapping("/getAllCategory")
+    public List<Category> getAllCategory(){
         return categoryServiceImpl.getAllCategory();
     }
 
     @GetMapping("getById")
-    public CategoryEntity getById(@RequestParam int id){
+    public Optional<Category> getById(@RequestParam int id){
         return categoryServiceImpl.getById(id);
     }
 }

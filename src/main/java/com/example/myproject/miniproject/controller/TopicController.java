@@ -1,14 +1,12 @@
 package com.example.myproject.miniproject.controller;
 
-import com.example.myproject.miniproject.entities.OrganizerEntity;
-import com.example.myproject.miniproject.entities.TopicEntity;
-import com.example.myproject.miniproject.repositories.OrganizerRepository;
-import com.example.myproject.miniproject.services.impl.OrganizerServiceImpl;
+import com.example.myproject.miniproject.entities.Topics;
 import com.example.myproject.miniproject.services.impl.TopicServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("topics")
@@ -23,18 +21,18 @@ public class TopicController {
     }
 
     @PostMapping("/addNewTopic")
-    public TopicEntity addNewTopic(@RequestBody TopicEntity param){
+    public Topics addNewTopic(@RequestBody Topics param){
         topicServiceImpl.createNewTopic(param);
         return param;
     }
 
     @GetMapping("/getAllTopic")
-    public List<TopicEntity> getAllTopic(){
+    public List<Topics> getAllTopic(){
         return topicServiceImpl.getAllTopic();
     }
 
     @GetMapping("getById")
-    public TopicEntity getById(@RequestParam int id){
+    public Optional<Topics> getById(@RequestParam int id){
         return topicServiceImpl.getById(id);
     }
 }

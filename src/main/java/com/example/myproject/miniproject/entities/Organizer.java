@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "organizer")
-public class OrganizerEntity {
+public class Organizer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +28,18 @@ public class OrganizerEntity {
 
     @Column(nullable = false)
     private String website;
+
+    public Organizer() {
+    }
+
+    public Organizer(int id, String name, String address, String organization_email, String organization_phone, String website) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.organization_email = organization_email;
+        this.organization_phone = organization_phone;
+        this.website = website;
+    }
 
     public int getId() {
         return id;
